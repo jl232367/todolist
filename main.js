@@ -1,0 +1,1 @@
+(()=>{"use strict";("Something","A thing I need to do","Now","very","some stuff I need to do for this task","no",()=>{console.log("Something","A thing I need to do","Now","very","some stuff I need to do for this task","no")})(),console.log("hello!")})();
