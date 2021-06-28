@@ -2,3 +2,37 @@ body {
 background: rgb(2,0,36);
 background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%);
 }
+
+
+.projects {
+    background-color: aliceblue;
+    width: 1000px;
+    max-width: 90%;
+    height: 300px;
+    max-height: 60%;
+    margin: auto;
+}
+.wrapper {
+    width: 90%;
+    height: 90%;
+    margin: auto;
+    flex: auto;
+    flex-wrap: wrap;
+}
+
+.simpleTaskList {
+    background-color: aliceblue;
+    width: 400px;
+    max-width: 30%;
+    height: 300px;
+    max-height: 35%;
+    margin: auto;
+    margin-top: 25px;
+}
+
+/*
+#projectContainer {
+ background-color: aliceblue;
+
+}
+*/
