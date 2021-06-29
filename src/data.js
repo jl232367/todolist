@@ -1,9 +1,5 @@
-const taskStorage = () => {
-    const taskArray = []
-    const projArray = []
 
-    return {taskArray, projArray};
+    let taskArray = []
+    let projArray = []
 
-}
-
-export {taskStorage}
+export {taskArray, projArray}
