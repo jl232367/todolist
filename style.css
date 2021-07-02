@@ -2,7 +2,14 @@ body {
 background: rgb(2,0,36);
 background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%);
 }
-
+.plusMoreTaskText {
+    max-width: 40%;
+}
+.plusMoreTaskPlusButton {
+    max-height: 10%;
+    margin-top: 3.2%;
+    margin-left: 2%;
+}
 
 .projects {
     background-color: aliceblue;
@@ -28,6 +35,7 @@ background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(
     max-height: 35%;
     margin: auto;
     margin-top: 25px;
+    display: flex;
 }
 
 /*
