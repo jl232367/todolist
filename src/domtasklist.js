@@ -1,5 +1,20 @@
 // THIS IS STARTER CODE TO MAKE THE TASK LIST FOR THE TODO LIST. 
 
+const makeAddTaskButton = () => {
+    const taskListCardContainer = document.getElementById("taskListContainer");
+    const plusMoreTaskText = document.createElement("h3");
+    taskListCardContainer.appendChild(plusMoreTaskText);
+    plusMoreTaskText.innerText = "Add more tasks: =>";
+    plusMoreTaskText.setAttribute("class", "plusMoreTaskText");
+    const plusMoreTaskPlusButton = document.createElement("button");
+    taskListCardContainer.appendChild(plusMoreTaskPlusButton);
+    plusMoreTaskPlusButton.setAttribute("class", "plusMoreTaskPlusButton");
+    plusMoreTaskPlusButton.setAttribute("id", "addTaskPlusButton");
+    plusMoreTaskPlusButton.innerHTML = "+";
+
+}
+
+export {makeAddTaskButton}
 /*
 function displayBooks() {
     clearList();
