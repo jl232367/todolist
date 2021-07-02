@@ -23,6 +23,9 @@ const newTaskForm = () => {
     title.setAttribute("placeholder", "Task Title");
 
     formInput("text", "description", "Task Description");
+    formInput("date", "dueDate", "Task Due Date");
+    formInput("text", "priority", "Priority of Task?");
+    
 
     const formInput = (type, n, placeholder) => {
     let n = document.createElement("input");
