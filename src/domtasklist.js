@@ -14,6 +14,25 @@ const makeAddTaskButton = () => {
 
 }
 
+const newTaskForm = () => {
+    // Need to generate a form when "+" is hit.  Need to capture: title, description, dueDate, priority, notes, completed
+    let simpletaskform = document.createElement("form");
+    let title = document.createElement("input");
+    title.setAttribute("type", "text");
+    title.setAttribute("name", "title");
+    title.setAttribute("placeholder", "Task Title");
+
+    formInput("text", "description", "Task Description");
+
+    const formInput = (type, n, placeholder) => {
+    let n = document.createElement("input");
+    n.setAttribute("type", type);
+    n.setAttribute("name", n);
+    n.setAttribute("placeholder", placeholder);
+
+    }
+}
+
 export {makeAddTaskButton}
 /*
 function displayBooks() {
