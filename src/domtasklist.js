@@ -1,5 +1,80 @@
 // THIS IS STARTER CODE TO MAKE THE TASK LIST FOR THE TODO LIST. 
 
+
+
+const clearList = (containingElementToClear) => {
+    const parentElement = document.querySelector(containingElementToClear);
+    while (parentElement.firstChild) {
+        parentElement.removeChild(parentElement.firstChild);
+    }
+}
+
+const newTaskForm = (taskFormContainingElement) => {
+    // Need to generate a form when "+" is hit.  Need to capture: title, description, dueDate, priority, notes, completed
+    clearList(taskFormContainingElement) //clear contents of task list to make space for form
+    const taskFormContainer = document.querySelector(taskFormContainingElement)
+    let simpletaskform = document.createElement("form");
+    let title = document.createElement("input");
+    title.setAttribute("type", "text");
+    title.setAttribute("name", "title");
+    title.setAttribute("id", "taskTitle");
+    title.setAttribute("value", "Task Title");
+
+    let descriptionInputFeild = document.createElement("input");
+    descriptionInputFeild.setAttribute("type", "text");
+    descriptionInputFeild.setAttribute("name", "description");
+    descriptionInputFeild.setAttribute("id", "descriptoinInput");
+    descriptionInputFeild.setAttribute("value", "Task Description");
+    //let dueDateInputFeild = formInput("date", "dueDate", "Task Due Date", "dueDate");
+    let dueDateInputFeild = document.createElement("input");
+    dueDateInputFeild.setAttribute("type", "date");
+    dueDateInputFeild.setAttribute("name", "dueDate");
+    dueDateInputFeild.setAttribute("id", "dueDateId");
+    dueDateInputFeild.setAttribute("value", "Task Due Date");
+    //let priorityInputField = formInput("text", "priority", "Priority of Task?", "priority");
+    let priorityInputField = document.createElement("input");
+    priorityInputField.setAttribute("type", "text")
+    priorityInputField.setAttribute("name", "priority");
+    priorityInputField.setAttribute("id", "priorityId");
+    priorityInputField.setAttribute("value", "Priority of Task");
+    let notes = document.createElement("input");
+    notes.setAttribute("type", "textarea");
+    notes.setAttribute("name", "notes");
+    notes.setAttribute("row", "4");
+    notes.setAttribute("cols", "50");
+    notes.setAttribute("value", "Task Notes");
+    let completedFormLabel = document.createElement("label");
+    completedFormLabel.setAttribute("for", "complete");
+    completedFormLabel.innerText = "I have completed this task:"
+    //let incompleteInputField = formInput("radio", "complete", "Incomplete", "Incomplete");
+    let incompleteInputField = document.createElement("input");
+    incompleteInputField.setAttribute("type", "radio");
+    incompleteInputField.setAttribute("name", "taskCompletionCheck");
+    incompleteInputField.setAttribute("id", "incompleteInputId");
+    incompleteInputField.setAttribute("value", "Incomplete");
+
+    //let completedInputField = formInput("radio", "complete", "completed", "Completed");
+
+    taskFormContainer.appendChild(simpletaskform);
+    simpletaskform.appendChild(title);
+    simpletaskform.appendChild(descriptionInputFeild);
+    simpletaskform.appendChild(dueDateInputFeild);
+    simpletaskform.appendChild(notes);
+    simpletaskform.appendChild(priorityInputField);
+    simpletaskform.appendChild(completedFormLabel);
+    simpletaskform.appendChild(incompleteInputField);
+    //simpletaskform.appendChild(completedInputField);
+
+
+    const formInput = (type, n, placeholder, id) => { // small function to shorten basic form input
+        let inputField = document.createElement("input");
+        inputField.setAttribute("type", type);
+        inputField.setAttribute("id", id);
+        inputField.setAttribute("name", n);
+        inputField.setAttribute("value", placeholder);
+        return inputField; 
+    }
+}
 const makeAddTaskButton = () => {
     const taskListCardContainer = document.getElementById("taskListContainer");
     const plusMoreTaskText = document.createElement("h3");
@@ -11,33 +86,14 @@ const makeAddTaskButton = () => {
     plusMoreTaskPlusButton.setAttribute("class", "plusMoreTaskPlusButton");
     plusMoreTaskPlusButton.setAttribute("id", "addTaskPlusButton");
     plusMoreTaskPlusButton.innerHTML = "+";
-
+    plusMoreTaskPlusButton.addEventListener('click', () => {newTaskForm("#taskListContainer")});  //
 }
 
-const newTaskForm = () => {
-    // Need to generate a form when "+" is hit.  Need to capture: title, description, dueDate, priority, notes, completed
-    let simpletaskform = document.createElement("form");
-    let title = document.createElement("input");
-    title.setAttribute("type", "text");
-    title.setAttribute("name", "title");
-    title.setAttribute("placeholder", "Task Title");
-
-    formInput("text", "description", "Task Description");
-    formInput("date", "dueDate", "Task Due Date");
-    formInput("text", "priority", "Priority of Task?");
-    
-
-    const formInput = (type, n, placeholder) => {
-    let n = document.createElement("input");
-    n.setAttribute("type", type);
-    n.setAttribute("name", n);
-    n.setAttribute("placeholder", placeholder);
-
-    }
-}
-
-export {makeAddTaskButton}
+export {makeAddTaskButton, clearList, newTaskForm}
 /*
+() => {prompt("Hello There! I Did a thing!")}
+
+
 function displayBooks() {
     clearList();
     // I am making this loop to display all the contents of the array holding the objects that contain the Book data
