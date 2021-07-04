@@ -1,5 +1,5 @@
 // THIS IS STARTER CODE TO MAKE THE TASK LIST FOR THE TODO LIST. 
-
+import * as addTaskFuncs from "./datatransfer"
 
 
 const clearList = (containingElementToClear) => {
@@ -45,25 +45,57 @@ const newTaskForm = (taskFormContainingElement) => {
     notes.setAttribute("value", "Task Notes");
     let completedFormLabel = document.createElement("label");
     completedFormLabel.setAttribute("for", "complete");
-    completedFormLabel.innerText = "I have completed this task:"
+    completedFormLabel.innerText = "Is this Task complete yet?";
     //let incompleteInputField = formInput("radio", "complete", "Incomplete", "Incomplete");
     let incompleteInputField = document.createElement("input");
     incompleteInputField.setAttribute("type", "radio");
     incompleteInputField.setAttribute("name", "taskCompletionCheck");
     incompleteInputField.setAttribute("id", "incompleteInputId");
-    incompleteInputField.setAttribute("value", "Incomplete");
+    incompleteInputField.setAttribute("value", "incomplete");
+    let incompleteInputFieldLabel = document.createElement("label");
+    incompleteInputFieldLabel.setAttribute("for", "incompleInputId");
+    incompleteInputFieldLabel.innerText = ":Incomplete";
+
 
     //let completedInputField = formInput("radio", "complete", "completed", "Completed");
+    let completedInputField = document.createElement("input");
+    completedInputField.setAttribute("type", "radio");
+    completedInputField.setAttribute("name", "taskCompletionCheck");
+    completedInputField.setAttribute("id", "completedInputId");
+    completedInputField.setAttribute("value", "completed");
+    let completedInputFieldLabel = document.createElement("label");
+    completedInputFieldLabel.setAttribute("for", "completedInputId");
+    completedInputFieldLabel.innerText = ":Completed";
+    // adding cancel and submit buttons.  cancel will clear the form.  submit will pass data to function to append new task to array
+    const submitTaskButton = document.createElement("button");
+    submitTaskButton.setAttribute("class", "submitNewTaskFormButton");
+    submitTaskButton.setAttribute("id", "submitNewTaskFormButtonId");
+    submitTaskButton.innerText = "Add Task!";
+    submitTaskButton.addEventListener("click", () => {});
+    const cancelTaskFormButton = document.createElement("button");
+    cancelTaskFormButton.setAttribute("class", "cancelTaskFrom");
+    cancelTaskFormButton.setAttribute("id", "cancelTaskFormId");
+    cancelTaskFormButton.innerText = "Cancel";
+    cancelTaskFormButton.addEventListener("click", () => {});
+    const lineBreak = document.createElement("br");
 
     taskFormContainer.appendChild(simpletaskform);
     simpletaskform.appendChild(title);
     simpletaskform.appendChild(descriptionInputFeild);
     simpletaskform.appendChild(dueDateInputFeild);
     simpletaskform.appendChild(notes);
+    simpletaskform.appendChild(lineBreak);
     simpletaskform.appendChild(priorityInputField);
+    simpletaskform.appendChild(lineBreak);
+    
     simpletaskform.appendChild(completedFormLabel);
     simpletaskform.appendChild(incompleteInputField);
-    //simpletaskform.appendChild(completedInputField);
+    simpletaskform.appendChild(incompleteInputFieldLabel);
+    simpletaskform.appendChild(completedInputField);
+    simpletaskform.appendChild(completedInputFieldLabel);
+    simpletaskform.appendChild(lineBreak);
+    simpletaskform.appendChild(cancelTaskFormButton);
+    simpletaskform.appendChild(submitTaskButton);
 
 
     const formInput = (type, n, placeholder, id) => { // small function to shorten basic form input
