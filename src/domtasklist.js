@@ -78,6 +78,7 @@ const newTaskForm = (taskFormContainingElement) => {
         
         pushDataFuncs.pushTaskFormDataToTaskArray();
         clearList(taskFormContainingElement);
+        makeTaskList();
         makeAddTaskButton();
     });
     const cancelTaskFormButton = document.createElement("button");
@@ -131,15 +132,26 @@ const makeAddTaskButton = () => {
 const makeTaskList = () => {
     for (let i = 0; i < data.taskArray.length; i++) {
     const taskListContainerHolder = document.getElementById("taskListContainer");
-    const eachTask = document. createElement("div");
+    const eachTask = document.createElement("div");
+    const eachTaskTitle = document.createElement("h3");
+    const eachTaskDescription = document.createElement("h6");
+    const eachTaskDueDate = document.createElement("h1");
+    //const eachTaskPriority = document.createElement("p")
+    const eachTaskNotes = document.createElement("p");
     
-    taskListContainerHolder.appendChild(eachTask)
+    taskListContainerHolder.appendChild(eachTask);
+    eachTask.appendChild(eachTaskTitle);
+    eachTask.appendChild(eachTaskDescription);
+    eachTask.appendChild(eachTaskDueDate);
+    eachTask.appendChild(eachTaskNotes);
 
     eachTask.setAttribute("class", "eachTask");
     eachTask.setAttribute("id", data.taskArray[i].title + i);
+    eachTaskTitle.innerHTML = data.taskArray[i].title; 
+    eachTaskDescription.innerHTML = data.taskArray[i].description;
     }
 }
-export {makeAddTaskButton, clearList, newTaskForm}
+export {makeAddTaskButton, clearList, newTaskForm, makeTaskList}
 /*
 () => {prompt("Hello There! I Did a thing!")}
 
