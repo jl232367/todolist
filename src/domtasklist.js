@@ -1,5 +1,6 @@
 // THIS IS STARTER CODE TO MAKE THE TASK LIST FOR THE TODO LIST. 
 import * as addTaskFuncs from "./datatransfer"
+import * as pushDataFuncs from "./simpletask";
 
 
 const clearList = (containingElementToClear) => {
@@ -40,6 +41,7 @@ const newTaskForm = (taskFormContainingElement) => {
     let notes = document.createElement("input");
     notes.setAttribute("type", "textarea");
     notes.setAttribute("name", "notes");
+    notes.setAttribute("id", "formNotesId");
     notes.setAttribute("row", "4");
     notes.setAttribute("cols", "50");
     notes.setAttribute("value", "Task Notes");
@@ -71,12 +73,17 @@ const newTaskForm = (taskFormContainingElement) => {
     submitTaskButton.setAttribute("class", "submitNewTaskFormButton");
     submitTaskButton.setAttribute("id", "submitNewTaskFormButtonId");
     submitTaskButton.innerText = "Add Task!";
-    submitTaskButton.addEventListener("click", () => {});
+    submitTaskButton.addEventListener("click", () => {
+        
+        pushDataFuncs.pushTaskFormDataToTaskArray();
+        clearList(taskFormContainingElement);
+        makeAddTaskButton();
+    });
     const cancelTaskFormButton = document.createElement("button");
     cancelTaskFormButton.setAttribute("class", "cancelTaskFrom");
     cancelTaskFormButton.setAttribute("id", "cancelTaskFormId");
     cancelTaskFormButton.innerText = "Cancel";
-    cancelTaskFormButton.addEventListener("click", () => {});
+    cancelTaskFormButton.addEventListener("click", () => {clearList(); makeAddTaskButton();});
     const lineBreak = document.createElement("br");
 
     taskFormContainer.appendChild(simpletaskform);
@@ -88,14 +95,14 @@ const newTaskForm = (taskFormContainingElement) => {
     simpletaskform.appendChild(priorityInputField);
     simpletaskform.appendChild(lineBreak);
     
-    simpletaskform.appendChild(completedFormLabel);
-    simpletaskform.appendChild(incompleteInputField);
-    simpletaskform.appendChild(incompleteInputFieldLabel);
-    simpletaskform.appendChild(completedInputField);
-    simpletaskform.appendChild(completedInputFieldLabel);
+    //simpletaskform.appendChild(completedFormLabel);
+    //simpletaskform.appendChild(incompleteInputField);
+    //simpletaskform.appendChild(incompleteInputFieldLabel);
+    //simpletaskform.appendChild(completedInputField);
+    //simpletaskform.appendChild(completedInputFieldLabel);
     simpletaskform.appendChild(lineBreak);
-    simpletaskform.appendChild(cancelTaskFormButton);
-    simpletaskform.appendChild(submitTaskButton);
+    taskFormContainer.appendChild(cancelTaskFormButton);
+    taskFormContainer.appendChild(submitTaskButton);
 
 
     const formInput = (type, n, placeholder, id) => { // small function to shorten basic form input
