@@ -8,5 +8,7 @@ const taskFactory = (title, description, dueDate, priority, notes, completed) =>
     }
     return {title, description, dueDate, priority, notes, completed, returnInput};
 }
+
+
 const testCon = (s1) => console.log(s1);
 export {testCon, taskFactory}

@@ -4,4 +4,6 @@ const pushData = (newTask) => {
     data.taskArray.push(newTask);
 }
 
+
+
 export {pushData}
