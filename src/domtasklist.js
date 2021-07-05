@@ -1,6 +1,7 @@
 // THIS IS STARTER CODE TO MAKE THE TASK LIST FOR THE TODO LIST. 
-import * as addTaskFuncs from "./datatransfer"
+import * as addTaskFuncs from "./datatransfer";
 import * as pushDataFuncs from "./simpletask";
+import * as data from "./data"
 
 
 const clearList = (containingElementToClear) => {
@@ -127,7 +128,17 @@ const makeAddTaskButton = () => {
     plusMoreTaskPlusButton.innerHTML = "+";
     plusMoreTaskPlusButton.addEventListener('click', () => {newTaskForm("#taskListContainer")});  //
 }
+const makeTaskList = () => {
+    for (let i = 0; i < data.taskArray.length; i++) {
+    const taskListContainerHolder = document.getElementById("taskListContainer");
+    const eachTask = document. createElement("div");
+    
+    taskListContainerHolder.appendChild(eachTask)
 
+    eachTask.setAttribute("class", "eachTask");
+    eachTask.setAttribute("id", data.taskArray[i].title + i);
+    }
+}
 export {makeAddTaskButton, clearList, newTaskForm}
 /*
 () => {prompt("Hello There! I Did a thing!")}
