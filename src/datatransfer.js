@@ -4,6 +4,8 @@ const pushData = (newTask) => {
     data.taskArray.push(newTask);
 }
 
+const pushProj = (newProj) => {
+    data.projArray.push(newProj);
+}
 
-
-export {pushData}
+export {pushData, pushProj}

@@ -1,19 +1,32 @@
-// THIS IS STARTER CODE TO MAKE THE TASK LIST FOR THE TODO LIST. 
-import * as addTaskFuncs from "./datatransfer";
-import * as pushDataFuncs from "./simpletask";
+import * as taskDOM from "./domtasklist";
+import * as dataTransFuncs from "./datatransfer";
+import * as projectFormFuncs from "./projectgenorator";
 import * as data from "./data"
+import * as generalDOM from "./domtasklist"
 
-
-const clearList = (containingElementToClear) => {
-    const parentElement = document.getElementById(containingElementToClear);
-    while (parentElement.firstChild) {
-        parentElement.removeChild(parentElement.firstChild);
-    }
+const generateProjectContainer = () => {
+    const getProjectsContainer = document.getElementById("projectContainer");
+    const individualProjectContainer = document.createElement("div");
 }
 
-const newTaskForm = (taskFormContainingElement) => {
+const makeAddProjButton = (taskButtonContainingElement) => {
+    const taskListCardContainer = document.getElementById(taskButtonContainingElement);
+    const plusMoreTaskText = document.createElement("h3");
+    taskListCardContainer.appendChild(plusMoreTaskText);
+    plusMoreTaskText.innerText = "Add more Project: =>";
+    plusMoreTaskText.setAttribute("class", "plusMoreTaskText");
+    const plusMoreTaskPlusButton = document.createElement("button");
+    taskListCardContainer.appendChild(plusMoreTaskPlusButton);
+    plusMoreTaskPlusButton.setAttribute("class", "plusMoreTaskPlusButton");
+    plusMoreTaskPlusButton.setAttribute("id", "addTaskPlusButton");
+    plusMoreTaskPlusButton.innerHTML = "+";
+    plusMoreTaskPlusButton.addEventListener('click', () => {newProjForm(taskButtonContainingElement)});
+          //
+}
+
+const newProjForm = (taskFormContainingElement) => {
     // Need to generate a form when "+" is hit.  Need to capture: title, description, dueDate, priority, notes, completed
-    clearList(taskFormContainingElement) //clear contents of task list to make space for form
+    generalDOM.clearList(taskFormContainingElement) //clear contents of task list to make space for form
     const taskFormContainer = document.getElementById(taskFormContainingElement)
     let simpletaskform = document.createElement("form");
     let title = document.createElement("input");
@@ -73,19 +86,21 @@ const newTaskForm = (taskFormContainingElement) => {
     const submitTaskButton = document.createElement("button");
     submitTaskButton.setAttribute("class", "submitNewTaskFormButton");
     submitTaskButton.setAttribute("id", "submitNewTaskFormButtonId");
-    submitTaskButton.innerText = "Add Task!";
+    submitTaskButton.innerText = "Add Project!";
     submitTaskButton.addEventListener("click", () => {
         
-        pushDataFuncs.pushTaskFormDataToTaskArray();
-        clearList(taskFormContainingElement);
-        makeTaskList(taskFormContainingElement);
-        makeAddTaskButton(taskFormContainingElement);
+        projectFormFuncs.pushProjFormDataToTaskArray();
+        //pushDataFuncs.pushTaskFormDataToTaskArray();
+        generalDOM.clearList(taskFormContainingElement);
+        makeProjList(taskFormContainingElement);
+        //makeTaskList(taskFormContainingElement);
+        makeAddProjButton(taskFormContainingElement);
     });
     const cancelTaskFormButton = document.createElement("button");
     cancelTaskFormButton.setAttribute("class", "cancelTaskFrom");
     cancelTaskFormButton.setAttribute("id", "cancelTaskFormId");
     cancelTaskFormButton.innerText = "Cancel";
-    cancelTaskFormButton.addEventListener("click", () => {clearList(); makeAddTaskButton();});
+    cancelTaskFormButton.addEventListener("click", () => {generalDOM.clearList(taskFormContainingElement); makeAddProjButton("projectContainer");});
     const lineBreak = document.createElement("br");
 
     taskFormContainer.appendChild(simpletaskform);
@@ -106,101 +121,34 @@ const newTaskForm = (taskFormContainingElement) => {
     taskFormContainer.appendChild(cancelTaskFormButton);
     taskFormContainer.appendChild(submitTaskButton);
 
+}
 
-    const formInput = (type, n, placeholder, id) => { // small function to shorten basic form input
-        let inputField = document.createElement("input");
-        inputField.setAttribute("type", type);
-        inputField.setAttribute("id", id);
-        inputField.setAttribute("name", n);
-        inputField.setAttribute("value", placeholder);
-        return inputField; 
-    }
-}
-const makeAddTaskButton = (taskButtonContainingElement) => {
-    const taskListCardContainer = document.getElementById(taskButtonContainingElement);
-    const plusMoreTaskText = document.createElement("h3");
-    taskListCardContainer.appendChild(plusMoreTaskText);
-    plusMoreTaskText.innerText = "Add more tasks: =>";
-    plusMoreTaskText.setAttribute("class", "plusMoreTaskText");
-    const plusMoreTaskPlusButton = document.createElement("button");
-    taskListCardContainer.appendChild(plusMoreTaskPlusButton);
-    plusMoreTaskPlusButton.setAttribute("class", "plusMoreTaskPlusButton");
-    plusMoreTaskPlusButton.setAttribute("id", "addTaskPlusButton");
-    plusMoreTaskPlusButton.innerHTML = "+";
-    plusMoreTaskPlusButton.addEventListener('click', () => {newTaskForm(taskButtonContainingElement)});  //
-}
-const makeTaskList = (containingListElement) => {
-    for (let i = 0; i < data.taskArray.length; i++) {
-    const taskListContainerHolder = document.getElementById(containingListElement);
-    const eachTask = document.createElement("div");
-    const eachTaskTitle = document.createElement("h3");
-    const eachTaskDescription = document.createElement("h6");
-    const eachTaskDueDate = document.createElement("h1");
+const makeProjList = (containingProjElement) => {
+    for (let i = 0; i < data.projArray.length; i++) {
+    const projectsContainerHolder = document.getElementById(containingProjElement);
+    const eachProj = document.createElement("div");
+    const eachProjTitle = document.createElement("h3");
+    const eachProjDescription = document.createElement("h6");
+    const eachProjDueDate = document.createElement("h1");
     //const eachTaskPriority = document.createElement("p")
-    const eachTaskNotes = document.createElement("p");
-    
-    taskListContainerHolder.appendChild(eachTask);
-    eachTask.appendChild(eachTaskTitle);
-    eachTask.appendChild(eachTaskDescription);
-    eachTask.appendChild(eachTaskDueDate);
-    eachTask.appendChild(eachTaskNotes);
+    const eachProjNotes = document.createElement("p");
+    const ProjTaskListContainer = document.createElement("div")
+        
+    projectsContainerHolder.appendChild(eachProj);
+        //for (let j = 0; j <data.porjArray[i].tasks.length; j++) {
+            
+         //}
 
-    eachTask.setAttribute("class", "eachTask");
-    eachTask.setAttribute("id", data.taskArray[i].title + i);
-    eachTaskTitle.innerHTML = data.taskArray[i].title; 
-    eachTaskDescription.innerHTML = data.taskArray[i].description;
+    eachProj.appendChild(eachProjTitle);
+    eachProj.appendChild(eachProjDescription);
+    eachProj.appendChild(eachProjDueDate);
+    eachProj.appendChild(eachProjNotes);
+    eachProj.appendChild(ProjTaskListContainer);
+
+    eachProj.setAttribute("class", "eachProj");
+    eachProj.setAttribute("id", data.projArray[i].title + i);
+    eachProjTitle.innerHTML = data.projArray[i].title; 
+    eachProjDescription.innerHTML = data.projArray[i].description;
     }
 }
-export {makeAddTaskButton, clearList, newTaskForm, makeTaskList}
-/*
-() => {prompt("Hello There! I Did a thing!")}
-
-
-function displayBooks() {
-    clearList();
-    // I am making this loop to display all the contents of the array holding the objects that contain the Book data
-for (let i = 0; i < myLibrary.length; i++) {
-    const bookList = document.querySelector(".bookList");
-    const eachBook = document.createElement("div");
-    const removeButton = document.createElement("button")
-    const readOnOff = document.createElement("button")
-    const brk = document.createElement("br");
-    bookList.appendChild(eachBook);
-    bookList.appendChild(removeButton);
-    bookList.appendChild(brk);
-    bookList.appendChild(readOnOff);
-    removeButton.setAttribute("class", "removeButton");
-    removeButton.setAttribute('id',  i);
-    removeButton.dataset.rIndexNum = i; 
-    removeButton.addEventListener('click', (e) => {removeABook(e)} 
-    );
-    readOnOff.setAttribute("class", "readOnOffButton");
-    readOnOff.setAttribute("id", i);
-    readOnOff.dataset.inNum = i;
-    readOnOff.addEventListener('click',(e) => {
-        let dataNum = e.target.getAttribute("id");
-        myLibrary[dataNum].readToggle();
-        clearList();
-        displayBooks();
-    });
-        
-        
-        //alert(dataNum);
-        myLibrary.forEach ()
-       for (let i = 0; i < myLibrary.length; i++){
-           if (dataNum == i) {
-               let pos = i;
-               myLibrary.splice(i, 1);
-               //alert(dataNum);
-           }
-       }
-        
-    
-       eachBook.setAttribute('class', "eachBook");
-       eachBook.setAttribute('id', myLibrary[i].title + i);
-       eachBook.innerHTML = myLibrary[i].bookInfo(); 
-       removeButton.innerHTML = "Remove Book";
-       readOnOff.innerHTML = "Toggle have or Haven't read";
-   }
-   }
-*/ 
+export {generateProjectContainer, makeAddProjButton}
