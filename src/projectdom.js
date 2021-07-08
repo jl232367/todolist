@@ -25,10 +25,10 @@ const makeAddProjButton = (taskButtonContainingElement) => {
           //
 }
 
-const newProjForm = (taskFormContainingElement) => {
+const newProjForm = (projFormContainingElement) => {
     // Need to generate a form when "+" is hit.  Need to capture: title, description, dueDate, priority, notes, completed
-    generalDOM.clearList(taskFormContainingElement) //clear contents of task list to make space for form
-    const taskFormContainer = document.getElementById(taskFormContainingElement)
+    generalDOM.clearList(projFormContainingElement) //clear contents of task list to make space for form
+    const taskFormContainer = document.getElementById(projFormContainingElement)
     let simpletaskform = document.createElement("form");
     let title = document.createElement("input");
     title.setAttribute("type", "text");
@@ -93,15 +93,17 @@ const newProjForm = (taskFormContainingElement) => {
         projectFormFuncs.pushProjFormDataToTaskArray();
         //pushDataFuncs.pushTaskFormDataToTaskArray();
         generalDOM.clearList(taskFormContainingElement);
-        makeProjList(taskFormContainingElement);
+        makeProjList(projFormContainingElement);
         //makeTaskList(taskFormContainingElement);
-        makeAddProjButton(taskFormContainingElement);
+        makeAddProjButton(projFormContainingElement);
     });
     const cancelTaskFormButton = document.createElement("button");
     cancelTaskFormButton.setAttribute("class", "cancelTaskFrom");
     cancelTaskFormButton.setAttribute("id", "cancelTaskFormId");
     cancelTaskFormButton.innerText = "Cancel";
-    cancelTaskFormButton.addEventListener("click", () => {generalDOM.clearList(taskFormContainingElement); makeAddProjButton("projectContainer");});
+    cancelTaskFormButton.addEventListener("click", () => {
+            generalDOM.clearList(projFormContainingElement); makeAddProjButton("projectContainer");
+        });
     const lineBreak = document.createElement("br");
 
     taskFormContainer.appendChild(simpletaskform);
@@ -135,7 +137,7 @@ const makeProjList = (containingProjElement) => {
     const eachProjNotes = document.createElement("p");
     const projTaskListContainer = document.createElement("div")
     projTaskListContainer.setAttribute("class", "projectlistcontainer");
-    projTaskListContainer.setAttribute("id", data.projArray[i].title + i);
+    projTaskListContainer.setAttribute("id", data.projArray[i].title + i + "tasks");
     projTaskListContainer.dataset.projIndex = i;
         
     projectsContainerHolder.appendChild(eachProj);

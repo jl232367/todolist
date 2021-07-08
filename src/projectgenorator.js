@@ -4,14 +4,18 @@ import * as data from "./data"
 import * as simpletask from "./simpletask"
 
 
-const projectFactory = (title, description,tasks = [], dueDate, priority, notes, completed) => {
+const projectFactory = (title, description, dueDate, priority, notes, completed) => {
     
     const returnInput = () => {
         console.log (title, description, dueDate, priority, notes, completed);
     }
-    return {title, description, tasks, dueDate, priority, notes, completed, returnInput};
+    return {title, description, dueDate, priority, notes, completed, returnInput};
 }
 
+const projectTaskFactory = (title, description, dueDate, priority, notes, completed, projKeyValue) => { 
+    return {title, description, dueDate, priority, notes, completed, projKeyValue};
+}
+// Pushes Project form data to project array
 const pushProjFormDataToTaskArray = () => {
     // get title, descript, duedate,priority, notes, completed from form
     const newTaskTitle = document.getElementById("taskTitle").value; 
@@ -20,9 +24,9 @@ const pushProjFormDataToTaskArray = () => {
     const newTaskPriority = document.getElementById("priorityId").value;
     const newTaskNotes = document.getElementById("formNotesId").value;
     const defaultTaskIncomplete = "Incomplete";
-
-    const newTaskToPush = projectFactory(newTaskTitle, newTaskDescription, newTaskDueDate, newTaskPriority, newTaskNotes, defaultTaskIncomplete);
-    dataTransfer.pushProj(newTaskToPush);
+    //
+    const newProjToPush = projectFactory(newTaskTitle, newTaskDescription, newTaskDueDate, newTaskPriority, newTaskNotes, defaultTaskIncomplete);
+    dataTransfer.pushProj(newProjToPush);
     //console.log(data.taskArray[0]);
     //console.log(data.taskArray[1]);
 }
@@ -36,10 +40,11 @@ const pushTaskFormDataToProjectTaskArray = (projArrayLoc) => {
     const newTaskNotes = document.getElementById("formNotesId").value;
     const defaultTaskIncomplete = "Incomplete";
 
-    const newTaskToPush = simpletask.taskFactory(newTaskTitle, newTaskDescription, newTaskDueDate, newTaskPriority, newTaskNotes, defaultTaskIncomplete);
+
+    const newTaskToPush = projectTaskFactory(newTaskTitle, newTaskDescription, newTaskDueDate, newTaskPriority, newTaskNotes, defaultTaskIncomplete);
     dataTransfer.pushDataProjectTasks(newTaskToPush, projArrayLoc);
     //console.log(data.taskArray[0]);
     //console.log(data.taskArray[1]);
 }
 
-export{projectFactory, pushProjFormDataToTaskArray, pushTaskFormDataToProjectTaskArray}
+export{projectFactory, pushProjFormDataToTaskArray, pushTaskFormDataToProjectTaskArray, projectTaskFactory}
