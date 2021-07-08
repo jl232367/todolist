@@ -31,7 +31,7 @@ const pushProjFormDataToTaskArray = () => {
     //console.log(data.taskArray[1]);
 }
 
-const pushTaskFormDataToProjectTaskArray = (projArrayLoc) => {
+const pushTaskFormDataToProjectTaskArray = (taskProjKeyValue) => {
     // get title, descript, duedate,priority, notes, completed from form
     const newTaskTitle = document.getElementById("taskTitle").value; 
     const newTaskDescription = document.getElementById("descriptoinInput").value;
@@ -39,10 +39,10 @@ const pushTaskFormDataToProjectTaskArray = (projArrayLoc) => {
     const newTaskPriority = document.getElementById("priorityId").value;
     const newTaskNotes = document.getElementById("formNotesId").value;
     const defaultTaskIncomplete = "Incomplete";
+    const projectKeyValueForTasks = taskProjKeyValue
 
-
-    const newTaskToPush = projectTaskFactory(newTaskTitle, newTaskDescription, newTaskDueDate, newTaskPriority, newTaskNotes, defaultTaskIncomplete);
-    dataTransfer.pushDataProjectTasks(newTaskToPush, projArrayLoc);
+    const newTaskToPush = projectTaskFactory(newTaskTitle, newTaskDescription, newTaskDueDate, newTaskPriority, newTaskNotes, defaultTaskIncomplete, projectKeyValueForTasks);
+    dataTransfer.pushDataProjectTasks(newTaskToPush);
     //console.log(data.taskArray[0]);
     //console.log(data.taskArray[1]);
 }

@@ -5,8 +5,8 @@ const pushData = (newTask) => {
     data.taskArray.push(newTask);
 }
 
-const pushDataProjectTasks = (newTask, arrayLoc) => {
-    data.projArray[arrayLoc].push(newTask);
+const pushDataProjectTasks = (newTask) => {
+    data.projTaskArray.push(newTask);
 }
 
 const pushProj = (newProj) => {

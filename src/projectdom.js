@@ -34,32 +34,32 @@ const newProjForm = (projFormContainingElement) => {
     title.setAttribute("type", "text");
     title.setAttribute("name", "title");
     title.setAttribute("id", "taskTitle");
-    title.setAttribute("value", "Task Title");
+    title.setAttribute("value", "Project Title");
 
     let descriptionInputFeild = document.createElement("input");
     descriptionInputFeild.setAttribute("type", "text");
     descriptionInputFeild.setAttribute("name", "description");
     descriptionInputFeild.setAttribute("id", "descriptoinInput");
-    descriptionInputFeild.setAttribute("value", "Task Description");
+    descriptionInputFeild.setAttribute("value", "Project Description");
     //let dueDateInputFeild = formInput("date", "dueDate", "Task Due Date", "dueDate");
     let dueDateInputFeild = document.createElement("input");
     dueDateInputFeild.setAttribute("type", "date");
     dueDateInputFeild.setAttribute("name", "dueDate");
     dueDateInputFeild.setAttribute("id", "dueDateId");
-    dueDateInputFeild.setAttribute("value", "Task Due Date");
+    dueDateInputFeild.setAttribute("value", "Project Due Date");
     //let priorityInputField = formInput("text", "priority", "Priority of Task?", "priority");
     let priorityInputField = document.createElement("input");
     priorityInputField.setAttribute("type", "text")
     priorityInputField.setAttribute("name", "priority");
     priorityInputField.setAttribute("id", "priorityId");
-    priorityInputField.setAttribute("value", "Priority of Task");
+    priorityInputField.setAttribute("value", "Priority of Project");
     let notes = document.createElement("input");
     notes.setAttribute("type", "textarea");
     notes.setAttribute("name", "notes");
     notes.setAttribute("id", "formNotesId");
     notes.setAttribute("row", "4");
     notes.setAttribute("cols", "50");
-    notes.setAttribute("value", "Task Notes");
+    notes.setAttribute("value", "Project Notes");
     let completedFormLabel = document.createElement("label");
     completedFormLabel.setAttribute("for", "complete");
     completedFormLabel.innerText = "Is this Task complete yet?";
@@ -92,10 +92,10 @@ const newProjForm = (projFormContainingElement) => {
         
         projectFormFuncs.pushProjFormDataToTaskArray();
         //pushDataFuncs.pushTaskFormDataToTaskArray();
-        generalDOM.clearList(taskFormContainingElement);
+        generalDOM.clearList(projFormContainingElement);
         makeProjList(projFormContainingElement);
         //makeTaskList(taskFormContainingElement);
-        makeAddProjButton(projFormContainingElement);
+        makeAddProjButton("projectContainer");
     });
     const cancelTaskFormButton = document.createElement("button");
     cancelTaskFormButton.setAttribute("class", "cancelTaskFrom");
@@ -130,6 +130,8 @@ const makeProjList = (containingProjElement) => {
     for (let i = 0; i < data.projArray.length; i++) {
     const projectsContainerHolder = document.getElementById(containingProjElement);
     const eachProj = document.createElement("div");
+    eachProj.setAttribute("class", "eachProj");
+    eachProj.setAttribute("id", data.projArray[i].title + i);
     const eachProjTitle = document.createElement("h3");
     const eachProjDescription = document.createElement("h6");
     const eachProjDueDate = document.createElement("h1");
@@ -138,25 +140,24 @@ const makeProjList = (containingProjElement) => {
     const projTaskListContainer = document.createElement("div")
     projTaskListContainer.setAttribute("class", "projectlistcontainer");
     projTaskListContainer.setAttribute("id", data.projArray[i].title + i + "tasks");
+    makeProjectTaskList
     projTaskListContainer.dataset.projIndex = i;
-        
-    projectsContainerHolder.appendChild(eachProj);
-        //for (let j = 0; j <data.porjArray[i].tasks.length; j++) {
-            
-         //}
-        
     eachProj.appendChild(eachProjTitle);
     eachProj.appendChild(eachProjDescription);
     eachProj.appendChild(eachProjDueDate);
     eachProj.appendChild(eachProjNotes);
     eachProj.appendChild(projTaskListContainer);
     
+    projectsContainerHolder.appendChild(eachProj);
+        
+        
+    
 
-    eachProj.setAttribute("class", "eachProj");
-    eachProj.setAttribute("id", data.projArray[i].title + i);
+    
     eachProjTitle.innerHTML = data.projArray[i].title; 
     eachProjDescription.innerHTML = data.projArray[i].description;
-    makeAddProjectTaskButton(projTaskListContainer.id);
+    makeProjectTaskList(projTaskListContainer.id);
+    //makeAddProjectTaskButton(projTaskListContainer.id);
     }
 }
 
@@ -225,12 +226,14 @@ const newProjTaskForm = (taskFormContainingElement) => {
     submitTaskButton.innerText = "Add Task!";
     submitTaskButton.addEventListener("click", () => {
         
-        projectFormFuncs.pushTaskFormDataToProjectTaskArray(taskFormContainer.projIndex);
-        generalDOM.clearList(taskFormContainer);
+        projectFormFuncs.pushTaskFormDataToProjectTaskArray(taskFormContainingElement);
+        generalDOM.clearList(taskFormContainingElement);
+        makeProjectTaskList(taskFormContainingElement);
+        //makeProjList("projectContainer");
         //clearList(taskFormContainingElement);
-        generalDOM.makeTaskList(taskFormContainer)
+        //generalDOM.makeTaskList(taskFormContainingElement)
         //makeTaskList(taskFormContainer);
-        makeAddProjectTaskButton(taskFormContainer);
+        //makeAddProjectTaskButton(taskFormContainingElement);
         //makeAddTaskButton(taskFormContainer);
     });
     const cancelTaskFormButton = document.createElement("button");
@@ -282,4 +285,33 @@ const makeAddProjectTaskButton = (taskButtonContainingElement) => {
     plusMoreTaskPlusButton.innerHTML = "+";
     plusMoreTaskPlusButton.addEventListener('click', () => {newProjTaskForm(taskButtonContainingElement)});  //
 }
+
+const makeProjectTaskList = (projectIdKey) => {
+    for (let j = 0; j <data.projTaskArray.length; j++) {
+        if (projectIdKey == data.projTaskArray[j].projKeyValue) {
+            //projTaskListContainer.appendChild()
+            const projTaskListContainer = document.getElementById(projectIdKey);
+            const eachTask = document.createElement("div");
+            const eachTaskTitle = document.createElement("h3");
+            const eachTaskDescription = document.createElement("h6");
+            const eachTaskDueDate = document.createElement("h1");
+            //const eachTaskPriority = document.createElement("p")
+            const eachTaskNotes = document.createElement("p");
+
+            projTaskListContainer.appendChild(eachTask);
+            eachTask.appendChild(eachTaskTitle);
+            eachTask.appendChild(eachTaskDescription);
+            eachTask.appendChild(eachTaskDueDate);
+            eachTask.appendChild(eachTaskNotes);
+
+            eachTask.setAttribute("class", "eachTask");
+            eachTask.setAttribute("id", data.projTaskArray[j].title + j);
+            eachTaskTitle.innerHTML = data.projTaskArray[j].title; 
+            eachTaskDescription.innerHTML = data.projTaskArray[j].description;
+                }
+            }
+            makeAddProjectTaskButton(projectIdKey);
+}
+
+
 export {generateProjectContainer, makeAddProjButton, makeProjList}
