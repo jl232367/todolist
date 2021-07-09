@@ -120,13 +120,13 @@ const makeAddTaskButton = (taskButtonContainingElement) => {
     const taskListCardContainer = document.getElementById(taskButtonContainingElement);
     const plusMoreTaskText = document.createElement("h3");
     taskListCardContainer.appendChild(plusMoreTaskText);
-    plusMoreTaskText.innerText = "Add more tasks: =>";
-    plusMoreTaskText.setAttribute("class", "plusMoreTaskText");
+    //plusMoreTaskText.innerText = "Add more tasks: =>";
+    //plusMoreTaskText.setAttribute("class", "plusMoreTaskText");
     const plusMoreTaskPlusButton = document.createElement("button");
     taskListCardContainer.appendChild(plusMoreTaskPlusButton);
     plusMoreTaskPlusButton.setAttribute("class", "plusMoreTaskPlusButton");
     plusMoreTaskPlusButton.setAttribute("id", "addTaskPlusButton");
-    plusMoreTaskPlusButton.innerHTML = "+";
+    plusMoreTaskPlusButton.innerHTML = "Add Task: +";
     plusMoreTaskPlusButton.addEventListener('click', () => {newTaskForm(taskButtonContainingElement)});  //
 }
 const makeTaskList = (containingListElement) => {

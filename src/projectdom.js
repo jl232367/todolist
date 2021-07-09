@@ -12,15 +12,15 @@ const generateProjectContainer = () => {
 
 const makeAddProjButton = (taskButtonContainingElement) => {
     const taskListCardContainer = document.getElementById(taskButtonContainingElement);
-    const plusMoreTaskText = document.createElement("h3");
-    taskListCardContainer.appendChild(plusMoreTaskText);
-    plusMoreTaskText.innerText = "Add more Project: =>";
-    plusMoreTaskText.setAttribute("class", "plusMoreTaskText");
+    //const plusMoreTaskText = document.createElement("h3");
+    //taskListCardContainer.appendChild(plusMoreTaskText);
+    //plusMoreTaskText.innerText = "Add more Project: =>";
+    //plusMoreTaskText.setAttribute("class", "plusMoreTaskText");
     const plusMoreTaskPlusButton = document.createElement("button");
     taskListCardContainer.appendChild(plusMoreTaskPlusButton);
     plusMoreTaskPlusButton.setAttribute("class", "plusMoreTaskPlusButton");
     plusMoreTaskPlusButton.setAttribute("id", "addTaskPlusButton");
-    plusMoreTaskPlusButton.innerHTML = "+";
+    plusMoreTaskPlusButton.innerHTML = "Add Project: +";
     plusMoreTaskPlusButton.addEventListener('click', () => {newProjForm(taskButtonContainingElement)});
           //
 }
@@ -287,15 +287,15 @@ const newProjTaskForm = (taskFormContainingElement) => {
 
 const makeAddProjectTaskButton = (taskButtonContainingElement) => {
     const taskListCardContainer = document.getElementById(taskButtonContainingElement);
-    const plusMoreTaskText = document.createElement("h3");
-    taskListCardContainer.appendChild(plusMoreTaskText);
-    plusMoreTaskText.innerText = "Add more tasks: =>";
-    plusMoreTaskText.setAttribute("class", "plusMoreTaskText");
+    //const plusMoreTaskText = document.createElement("h3");
+    //taskListCardContainer.appendChild(plusMoreTaskText);
+    //plusMoreTaskText.innerText = "Add more tasks: =>";
+    //plusMoreTaskText.setAttribute("class", "plusMoreTaskText");
     const plusMoreTaskPlusButton = document.createElement("button");
     taskListCardContainer.appendChild(plusMoreTaskPlusButton);
     plusMoreTaskPlusButton.setAttribute("class", "plusMoreTaskPlusButton");
     plusMoreTaskPlusButton.setAttribute("id", "addProjTaskPlusButton");
-    plusMoreTaskPlusButton.innerHTML = "+";
+    plusMoreTaskPlusButton.innerHTML = "Add Task:+";
     plusMoreTaskPlusButton.addEventListener('click', () => {newProjTaskForm(taskButtonContainingElement)});  //
 }
 
