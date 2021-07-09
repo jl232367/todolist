@@ -166,7 +166,7 @@ const makeProjList = (containingProjElement) => {
 
     
     eachProjTitle.innerHTML = data.projArray[i].title; 
-    eachProjDescription.innerHTML = data.projArray[i].completed;
+    eachProjDueDate.innerHTML = data.projArray[i].dueDate;
     completedButoon.innerHTML = "Completed!"
     makeProjectTaskList(projTaskListContainer.id);
     //makeAddProjectTaskButton(projTaskListContainer.id);
