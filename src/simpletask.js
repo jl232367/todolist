@@ -5,10 +5,14 @@ import * as dataTransferFuncs from "./datatransfer"
 import * as data from "./data"
 
 const taskFactory = (title, description, dueDate, priority, notes, completed) => {
+    let getCompleted = completed
+    const completionToggle = () => {
+        completed = "complete";
+    }
     const returnInput = () => {
         console.log (title, description, dueDate, priority, notes, completed);
     }
-    return {title, description, dueDate, priority, notes, completed, returnInput};
+    return {title, description, dueDate, priority, notes, completed, returnInput, completionToggle};
 }
 // function to take in form information and push new task to the task data array
 

@@ -131,27 +131,69 @@ const makeAddTaskButton = (taskButtonContainingElement) => {
 }
 const makeTaskList = (containingListElement) => {
     for (let i = 0; i < data.taskArray.length; i++) {
-    const taskListContainerHolder = document.getElementById(containingListElement);
-    const eachTask = document.createElement("div");
-    const eachTaskTitle = document.createElement("h3");
-    const eachTaskDescription = document.createElement("h6");
-    const eachTaskDueDate = document.createElement("h1");
-    //const eachTaskPriority = document.createElement("p")
-    const eachTaskNotes = document.createElement("p");
-    
-    taskListContainerHolder.appendChild(eachTask);
-    eachTask.appendChild(eachTaskTitle);
-    eachTask.appendChild(eachTaskDescription);
-    eachTask.appendChild(eachTaskDueDate);
-    eachTask.appendChild(eachTaskNotes);
+    if (data.taskArray[i].completed === "Incomplete") {
+        const taskListContainerHolder = document.getElementById(containingListElement);
+        const eachTask = document.createElement("div");
+        const expandedTaskInfo = document.createElement("div");
+        const eachTaskTitle = document.createElement("h2");
+        eachTaskTitle.setAttribute("class", "tasktitle");
+        const eachTaskDescription = document.createElement("h4");
+        eachTaskDescription.setAttribute("class", "taskdescription");
+        const eachTaskDueDate = document.createElement("h5");
+        eachTaskDueDate.setAttribute("class", "taskduedate");
+        //const eachTaskPriority = document.createElement("p")
+        const eachTaskNotes = document.createElement("p");
+        eachTaskNotes.setAttribute("class", "tasknotes");
+        //let taskIncomplete = data.projArray[i].title;
+        const expandCollapseButton = document.createElement("button");
+        expandCollapseButton.addEventListener("click", () => {
+            expandCollapseTask(expandedTaskInfo)
+        });
+        const completedButoon = document.createElement("button");
+        completedButoon.dataset.cIndex = i;
+        completedButoon.addEventListener("click", () => {
+                    let numberForArrayPosition = i;
+                    data.taskArray[numberForArrayPosition].completed = "complete"
+                    clearList(containingListElement);
+                    makeTaskList(containingListElement);
+                    makeAddTaskButton(containingListElement);
+                });
+        
+        taskListContainerHolder.appendChild(eachTask);
+        
+        eachTask.appendChild(eachTaskTitle);
+        eachTask.appendChild(eachTaskDueDate);
+        eachTask.appendChild(expandedTaskInfo);
+        eachTask.appendChild(expandCollapseButton);
+        eachTask.appendChild(completedButoon);
+        expandedTaskInfo.appendChild(eachTaskDescription);
+        expandedTaskInfo.appendChild(eachTaskNotes);
+        expandedTaskInfo.style.display = "none";
 
-    eachTask.setAttribute("class", "eachTask");
-    eachTask.setAttribute("id", data.taskArray[i].title + i);
-    eachTaskTitle.innerHTML = data.taskArray[i].title; 
-    eachTaskDescription.innerHTML = data.taskArray[i].description;
+        eachTask.setAttribute("class", "eachTask");
+        eachTask.setAttribute("id", data.taskArray[i].title + i);
+        eachTaskTitle.innerHTML = data.taskArray[i].title;
+        eachTaskDueDate.innerHTML = data.taskArray[i].dueDate;
+        eachTaskDescription.innerHTML = data.taskArray[i].description;
+        eachTaskNotes.innerHTML = data.taskArray[i].notes;
+        expandCollapseButton.innerHTML = "Expand/Collapse!";
+        completedButoon.innerHTML = "Completed!"
+    }
     }
 }
-export {makeAddTaskButton, clearList, newTaskForm, makeTaskList}
+
+const expandCollapseTask = (expandedtaskinfocontainer) => {
+    if (expandedtaskinfocontainer.style.display === "none") {
+        expandedtaskinfocontainer.style.display = "block";
+    } else {
+        expandedtaskinfocontainer.style.display = "none";
+    }
+}
+
+const completedTask = (taskToMarkCompleted) => {
+    return taskToMarkCompleted = "completed";
+}
+export {makeAddTaskButton, clearList, newTaskForm, makeTaskList, expandCollapseTask, completedTask}
 /*
 () => {prompt("Hello There! I Did a thing!")}
 

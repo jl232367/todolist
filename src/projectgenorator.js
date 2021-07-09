@@ -5,15 +5,20 @@ import * as simpletask from "./simpletask"
 
 
 const projectFactory = (title, description, dueDate, priority, notes, completed) => {
-    
+    const completionToggle = () => {
+        completed = "complete";
+    }
     const returnInput = () => {
         console.log (title, description, dueDate, priority, notes, completed);
     }
-    return {title, description, dueDate, priority, notes, completed, returnInput};
+    return {title, description, dueDate, priority, notes, completed, completionToggle};
 }
 
 const projectTaskFactory = (title, description, dueDate, priority, notes, completed, projKeyValue) => { 
-    return {title, description, dueDate, priority, notes, completed, projKeyValue};
+    const completionToggle = () => {
+        completed = "complete";
+    }
+    return {title, description, dueDate, priority, notes, completed, projKeyValue, completionToggle};
 }
 // Pushes Project form data to project array
 const pushProjFormDataToTaskArray = () => {
