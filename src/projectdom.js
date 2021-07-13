@@ -1,14 +1,8 @@
-import * as taskDOM from "./domtasklist";
-import * as dataTransfer from "./datatransfer";
 import * as projectFormFuncs from "./projectgenorator";
 import * as data from "./data"
 import * as generalDOM from "./domtasklist"
-import * as simpleTask from "./simpletask"
 
-const generateProjectContainer = () => {
-    const getProjectsContainer = document.getElementById("projectContainer");
-    const individualProjectContainer = document.createElement("div");
-}
+
 
 const makeAddProjButton = (taskButtonContainingElement) => {
     const taskListCardContainer = document.getElementById(taskButtonContainingElement);
@@ -253,7 +247,7 @@ const newProjTaskForm = (taskFormContainingElement) => {
     cancelTaskFormButton.setAttribute("class", "cancelTaskFrom");
     cancelTaskFormButton.setAttribute("id", "cancelTaskFormId");
     cancelTaskFormButton.innerText = "Cancel";
-    cancelTaskFormButton.addEventListener("click", () => {clearList(); makeAddTaskButton();});
+    cancelTaskFormButton.addEventListener("click", () => {generalDOM.clearList(); generalDOM.makeAddTaskButton();});
     const lineBreak = document.createElement("br");
 
     taskFormContainer.appendChild(simpletaskform);
@@ -275,14 +269,7 @@ const newProjTaskForm = (taskFormContainingElement) => {
     taskFormContainer.appendChild(submitTaskButton);
 
 
-    const formInput = (type, n, placeholder, id) => { // small function to shorten basic form input
-        let inputField = document.createElement("input");
-        inputField.setAttribute("type", type);
-        inputField.setAttribute("id", id);
-        inputField.setAttribute("name", n);
-        inputField.setAttribute("value", placeholder);
-        return inputField; 
-    }
+    
 }
 
 const makeAddProjectTaskButton = (taskButtonContainingElement) => {
@@ -354,7 +341,7 @@ const makeProjectTaskList = (projectIdKey) => {
 }
 
 
-export {generateProjectContainer, makeAddProjButton, makeProjList}
+export {makeAddProjButton, makeProjList}
 
 /*
 const eachTask = document.createElement("div");

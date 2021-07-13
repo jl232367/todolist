@@ -1,5 +1,4 @@
 // THIS IS STARTER CODE TO MAKE THE TASK LIST FOR THE TODO LIST. 
-import * as addTaskFuncs from "./datatransfer";
 import * as pushDataFuncs from "./simpletask";
 import * as data from "./data"
 
@@ -107,14 +106,7 @@ const newTaskForm = (taskFormContainingElement) => {
     taskFormContainer.appendChild(submitTaskButton);
 
 
-    const formInput = (type, n, placeholder, id) => { // small function to shorten basic form input
-        let inputField = document.createElement("input");
-        inputField.setAttribute("type", type);
-        inputField.setAttribute("id", id);
-        inputField.setAttribute("name", n);
-        inputField.setAttribute("value", placeholder);
-        return inputField; 
-    }
+    
 }
 const makeAddTaskButton = (taskButtonContainingElement) => {
     const taskListCardContainer = document.getElementById(taskButtonContainingElement);
@@ -190,10 +182,8 @@ const expandCollapseTask = (expandedtaskinfocontainer) => {
     }
 }
 
-const completedTask = (taskToMarkCompleted) => {
-    return taskToMarkCompleted = "completed";
-}
-export {makeAddTaskButton, clearList, newTaskForm, makeTaskList, expandCollapseTask, completedTask}
+
+export {makeAddTaskButton, clearList, newTaskForm, makeTaskList, expandCollapseTask}
 /*
 () => {prompt("Hello There! I Did a thing!")}
 

@@ -1,6 +1,4 @@
-import { taskFactory, testCon } from "./simpletask"
-import * as data from "./data";
-import * as transfer from "./datatransfer";
+
 import * as taskListDOMFuncstions from "./domtasklist";
 import * as projectDomFunctions from "./projectdom";
 

@@ -1,15 +1,9 @@
-import * as projectDOM from "./projectdom";
 import * as dataTransfer from "./datatransfer";
-import * as data from "./data"
-import * as simpletask from "./simpletask"
 
 
 const projectFactory = (title, description, dueDate, priority, notes, completed) => {
     const completionToggle = () => {
         completed = "complete";
-    }
-    const returnInput = () => {
-        console.log (title, description, dueDate, priority, notes, completed);
     }
     return {title, description, dueDate, priority, notes, completed, completionToggle};
 }
