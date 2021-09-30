@@ -150,6 +150,7 @@ const makeTaskList = (containingListElement) => {
       completedButoon.addEventListener("click", () => {
         let numberForArrayPosition = i;
         data.taskArray[numberForArrayPosition].completed = "complete";
+        localStorage.setItem("taskArrayKey", JSON.stringify(data.taskArray));
         clearList(containingListElement);
         makeTaskList(containingListElement);
         makeAddTaskButton(containingListElement);

@@ -141,6 +141,7 @@ const makeProjList = (containingProjElement) => {
             completedButoon.addEventListener("click", () => {
                 let numberForArrayPosition = i;
                     data.projArray[numberForArrayPosition].completed = "complete"
+                    localStorage.setItem("projArrayKey", JSON.stringify(data.projArray));
                     generalDOM.clearList(containingProjElement);
                     makeProjList(containingProjElement);
                     makeAddProjButton(containingProjElement);
@@ -311,6 +312,7 @@ const makeProjectTaskList = (projectIdKey) => {
             completedButoon.addEventListener("click", () => {
                 let numberForArrayPosition = j;
                     data.projTaskArray[numberForArrayPosition].completed = "complete"
+                    localStorage.setItem("projTaskArrayKey", JSON.stringify(data.projTaskArray));
                     generalDOM.clearList(projectIdKey);
                     makeProjectTaskList(projectIdKey);
                     //makeAddTaskButton(containingListElement);
