@@ -82,8 +82,9 @@ const newTaskForm = (taskFormContainingElement) => {
   cancelTaskFormButton.setAttribute("id", "cancelTaskFormId");
   cancelTaskFormButton.innerText = "Cancel";
   cancelTaskFormButton.addEventListener("click", () => {
-    clearList();
-    makeAddTaskButton();
+    clearList(taskFormContainingElement);
+    makeTaskList(taskFormContainingElement);
+    makeAddTaskButton(taskFormContainingElement);
   });
   const lineBreak = document.createElement("br");
 

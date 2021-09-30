@@ -96,7 +96,7 @@ const newProjForm = (projFormContainingElement) => {
     cancelTaskFormButton.setAttribute("id", "cancelTaskFormId");
     cancelTaskFormButton.innerText = "Cancel";
     cancelTaskFormButton.addEventListener("click", () => {
-            generalDOM.clearList(projFormContainingElement); makeAddProjButton("projectContainer");
+            generalDOM.clearList(projFormContainingElement); makeProjList(projFormContainingElement); makeAddProjButton("projectContainer");
         });
     const lineBreak = document.createElement("br");
 
