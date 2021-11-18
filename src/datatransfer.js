@@ -27,7 +27,9 @@ const pushProj = (newProj) => {
         data.projArray.push(newProj);
         localStorage.setItem("projArrayKey", JSON.stringify(data.projArray));
    
-     //   let localStorageProjArray = localStorage.getItem("projArrayKey");
+       // let localStorageProjArray = localStorage.getItem("projArrayKey");
+
+       // data.projArray = JSON.parse(localStorageProjArray);
     
     //console.log(newProj);
    //data.projArray.push(newProj);
