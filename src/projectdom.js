@@ -334,7 +334,7 @@ const makeProjectTaskList = (projectIdKey) => {
             expandedTaskInfo.appendChild(eachTaskNotes);
             expandedTaskInfo.style.display = "none";
 
-            eachTask.setAttribute("class", "eachTask");
+            eachTask.setAttribute("class", "eachProjTask");
             eachTask.setAttribute("id", data.projTaskArray[j].title + j);
             eachTaskTitle.innerHTML = data.projTaskArray[j].title;
             eachTaskDueDate.innerHTML = data.projTaskArray[j].dueDate;

@@ -7,7 +7,7 @@ import * as data from "./data";
 //const secondTask = taskFactory("something secon", "A second thing to do", "now second", "very second", "some second stuff to do", "no second")
 //data.taskArray.push(firstTask);
 
-if (!data.taskArray && !data.projArray) {
+if (!data.localStorageTaskArray && !data.localStorageProjArray) {
     taskListDOMFuncstions.makeAddTaskButton("taskListContainer");
     projectDomFunctions.makeAddProjButton("projectContainer");
 } else {
