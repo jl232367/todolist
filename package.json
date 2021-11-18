@@ -31,5 +31,6 @@
   "dependencies": {
     "express": "^4.17.1",
     "gh-pages": "^3.2.3"
-  }
+  },
+  "engines": {"node": "14.17.1"}
 }

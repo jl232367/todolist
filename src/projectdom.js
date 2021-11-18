@@ -121,53 +121,58 @@ const newProjForm = (projFormContainingElement) => {
 }
 
 const makeProjList = (containingProjElement) => {
-    for (let i = 0; i < data.projArray.length; i++) {
-        if (data.projArray[i].completed === "Incomplete") {
-            const projectsContainerHolder = document.getElementById(containingProjElement);
-    const eachProj = document.createElement("div");
-    eachProj.setAttribute("class", "eachProj");
-    eachProj.setAttribute("id", data.projArray[i].title + i);
-    const eachProjTitle = document.createElement("h3");
-    const eachProjDescription = document.createElement("h6");
-    const eachProjDueDate = document.createElement("h1");
-    //const eachTaskPriority = document.createElement("p")
-    const eachProjNotes = document.createElement("p");
-    const projTaskListContainer = document.createElement("div")
-    projTaskListContainer.setAttribute("class", "projectlistcontainer");
-    projTaskListContainer.setAttribute("id", data.projArray[i].title + i + "tasks");
-    makeProjectTaskList
-    projTaskListContainer.dataset.projIndex = i;
-    const completedButoon = document.createElement("button");
-            completedButoon.addEventListener("click", () => {
-                let numberForArrayPosition = i;
-                    data.projArray[numberForArrayPosition].completed = "complete"
-                    localStorage.setItem("projArrayKey", JSON.stringify(data.projArray));
-                    generalDOM.clearList(containingProjElement);
-                    makeProjList(containingProjElement);
-                    makeAddProjButton(containingProjElement);
-                    //makeAddTaskButton(containingListElement);
-            });
-    eachProj.appendChild(eachProjTitle);
-    eachProj.appendChild(eachProjDescription);
-    eachProj.appendChild(eachProjDueDate);
-    eachProj.appendChild(eachProjNotes);
-    eachProj.appendChild(projTaskListContainer);
-    eachProj.appendChild(completedButoon)
-    
-    projectsContainerHolder.appendChild(eachProj);
+    if (!data.projArray) {
+        makeAddProjectTaskButton(containingProjElement);
+    } else {
+        for (let i = 0; i < data.projArray.length; i++) {
+            if (data.projArray[i].completed === "Incomplete") {
+                const projectsContainerHolder = document.getElementById(containingProjElement);
+        const eachProj = document.createElement("div");
+        eachProj.setAttribute("class", "eachProj");
+        eachProj.setAttribute("id", data.projArray[i].title + i);
+        const eachProjTitle = document.createElement("h3");
+        const eachProjDescription = document.createElement("h6");
+        const eachProjDueDate = document.createElement("h1");
+        //const eachTaskPriority = document.createElement("p")
+        const eachProjNotes = document.createElement("p");
+        const projTaskListContainer = document.createElement("div")
+        projTaskListContainer.setAttribute("class", "projectlistcontainer");
+        projTaskListContainer.setAttribute("id", data.projArray[i].title + i + "tasks");
+        makeProjectTaskList
+        projTaskListContainer.dataset.projIndex = i;
+        const completedButoon = document.createElement("button");
+                completedButoon.addEventListener("click", () => {
+                    let numberForArrayPosition = i;
+                        data.projArray[numberForArrayPosition].completed = "complete"
+                        localStorage.setItem("projArrayKey", JSON.stringify(data.projArray));
+                        generalDOM.clearList(containingProjElement);
+                        makeProjList(containingProjElement);
+                        makeAddProjButton(containingProjElement);
+                        //makeAddTaskButton(containingListElement);
+                });
+        eachProj.appendChild(eachProjTitle);
+        eachProj.appendChild(eachProjDescription);
+        eachProj.appendChild(eachProjDueDate);
+        eachProj.appendChild(eachProjNotes);
+        eachProj.appendChild(projTaskListContainer);
+        eachProj.appendChild(completedButoon)
         
+        projectsContainerHolder.appendChild(eachProj);
+            
+            
         
     
-
-    
-    eachProjTitle.innerHTML = data.projArray[i].title; 
-    eachProjDueDate.innerHTML = data.projArray[i].dueDate;
-    completedButoon.innerHTML = "Completed!"
-    makeProjectTaskList(projTaskListContainer.id);
-    //makeAddProjectTaskButton(projTaskListContainer.id);
+        
+        eachProjTitle.innerHTML = data.projArray[i].title; 
+        eachProjDueDate.innerHTML = data.projArray[i].dueDate;
+        completedButoon.innerHTML = "Completed!"
+        makeProjectTaskList(projTaskListContainer.id);
+        //makeAddProjectTaskButton(projTaskListContainer.id);
+            }
         }
     }
-}
+    }
+    
 
 const newProjTaskForm = (taskFormContainingElement) => {
     // Need to generate a form when "+" is hit.  Need to capture: title, description, dueDate, priority, notes, completed
