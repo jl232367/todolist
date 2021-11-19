@@ -76,6 +76,7 @@ const newTaskForm = (taskFormContainingElement) => {
     clearList(taskFormContainingElement);
     makeTaskList(taskFormContainingElement);
     makeAddTaskButton(taskFormContainingElement);
+    console.log("Not sure why this would execute but trying it.");
   });
   const cancelTaskFormButton = document.createElement("button");
   cancelTaskFormButton.setAttribute("class", "cancelTaskFrom");
