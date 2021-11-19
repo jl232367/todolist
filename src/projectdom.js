@@ -297,7 +297,7 @@ const makeAddProjectTaskButton = (taskButtonContainingElement) => {
 
 const makeProjectTaskList = (projectIdKey) => {
     if (!data.projTaskArray) {
-        makeAddProjectTaskButton(containingProjElement);
+        makeAddProjectTaskButton(projectIdKey);
     } else {
         for (let j = 0; j <data.projTaskArray.length; j++) {
             if (projectIdKey == data.projTaskArray[j].projKeyValue && data.projTaskArray[j].completed === "Incomplete") {
