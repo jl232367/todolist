@@ -124,9 +124,9 @@ const makeAddTaskButton = (taskButtonContainingElement) => {
   }); //
 };
 const makeTaskList = (containingListElement) => {
-  if (!data.taskArray) {
-    makeAddTaskButton(containingListElement);
-} else {
+  //if (!data.taskArray) {
+    //makeAddTaskButton(containingListElement);
+//} else {
   for (let i = 0; i < data.taskArray.length; i++) {
     if (data.taskArray[i].completed === "Incomplete") {
       const taskListContainerHolder = document.getElementById(
@@ -182,7 +182,7 @@ const makeTaskList = (containingListElement) => {
   }
 }
   
-};
+//};
 
 const expandCollapseTask = (expandedtaskinfocontainer) => {
   if (expandedtaskinfocontainer.style.display === "none") {
