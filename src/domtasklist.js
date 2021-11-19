@@ -85,7 +85,7 @@ const newTaskForm = (taskFormContainingElement) => {
   cancelTaskFormButton.addEventListener("click", () => {
     clearList(taskFormContainingElement);
     makeTaskList(taskFormContainingElement);
-    makeAddTaskButton(taskFormContainingElement);
+    //makeAddTaskButton(taskFormContainingElement);
   });
   const lineBreak = document.createElement("br");
 
