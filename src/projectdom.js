@@ -106,7 +106,7 @@ const newProjForm = (projFormContainingElement) => {
     simpletaskform.appendChild(dueDateInputFeild);
     simpletaskform.appendChild(notes);
     simpletaskform.appendChild(lineBreak);
-    //simpletaskform.appendChild(priorityInputField);
+    simpletaskform.appendChild(priorityInputField);
     simpletaskform.appendChild(lineBreak);
     
     //simpletaskform.appendChild(completedFormLabel);
@@ -265,7 +265,7 @@ const newProjTaskForm = (taskFormContainingElement) => {
     simpletaskform.appendChild(dueDateInputFeild);
     simpletaskform.appendChild(notes);
     simpletaskform.appendChild(lineBreak);
-    //simpletaskform.appendChild(priorityInputField);
+    simpletaskform.appendChild(priorityInputField);
     simpletaskform.appendChild(lineBreak);
     
     //simpletaskform.appendChild(completedFormLabel);

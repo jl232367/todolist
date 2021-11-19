@@ -94,7 +94,7 @@ const newTaskForm = (taskFormContainingElement) => {
   simpletaskform.appendChild(dueDateInputFeild);
   simpletaskform.appendChild(notes);
   simpletaskform.appendChild(lineBreak);
-  //simpletaskform.appendChild(priorityInputField);
+  simpletaskform.appendChild(priorityInputField);
   simpletaskform.appendChild(lineBreak);
 
   //simpletaskform.appendChild(completedFormLabel);
@@ -125,7 +125,7 @@ const makeAddTaskButton = (taskButtonContainingElement) => {
 };
 const makeTaskList = (containingListElement) => {
   if (!data.taskArray) {
-    makeAddProjectTaskButton(containingListElement);
+    makeAddTaskButton(containingListElement);
 } else {
   for (let i = 0; i < data.taskArray.length; i++) {
     if (data.taskArray[i].completed === "Incomplete") {
