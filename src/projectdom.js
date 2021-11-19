@@ -122,7 +122,7 @@ const newProjForm = (projFormContainingElement) => {
 
 const makeProjList = (containingProjElement) => {
     if (!data.projArray) {
-        makeAddProjectTaskButton(containingProjElement);
+        makeAddProjButton(containingProjElement);
     } else {
         for (let i = 0; i < data.projArray.length; i++) {
             if (data.projArray[i].completed === "Incomplete") {
