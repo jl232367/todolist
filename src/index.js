@@ -10,7 +10,16 @@ import * as data from "./data";
 if (!data.localStorageTaskArray && !data.localStorageProjArray) {
     taskListDOMFuncstions.makeAddTaskButton("taskListContainer");
     projectDomFunctions.makeAddProjButton("projectContainer");
-} else {
+} else if (!data.localStorageTaskArray && data.localStorageProjArray) {
+    projectDomFunctions.makeProjList("projectContainer");
+    taskListDOMFuncstions.makeAddTaskButton("taskListContainer");
+    projectDomFunctions.makeAddProjButton("projectContainer");
+} else if (data.localStorageTaskArray && !data.localStorageProjArray) {
+    taskListDOMFuncstions.makeTaskList("taskListContainer");
+    taskListDOMFuncstions.makeAddTaskButton("taskListContainer");
+    projectDomFunctions.makeAddProjButton("projectContainer");
+}
+else {
     projectDomFunctions.makeProjList("projectContainer");
     taskListDOMFuncstions.makeTaskList("taskListContainer");
     taskListDOMFuncstions.makeAddTaskButton("taskListContainer");
