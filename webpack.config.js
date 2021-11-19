@@ -5,7 +5,7 @@ module.exports = {
   output: {
     filename: 'main.js',
     path: path.resolve(__dirname, 'dist'),
-    publicPath: "/todolist/",
+    publicPath: "/todolist-1/",
   },
   watch: true, 
 };
