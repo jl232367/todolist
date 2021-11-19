@@ -126,7 +126,7 @@ const makeAddTaskButton = (taskButtonContainingElement) => {
 };
 const makeTaskList = (containingListElement) => {
   if (!data.taskArray) {
-    makeAddTaskButton(containingListElement);
+    makeAddTaskButton("taskListContainer");
 } else {
   for (let i = 0; i < data.taskArray.length; i++) {
     if (data.taskArray[i].completed === "Incomplete") {
