@@ -15,8 +15,8 @@ if (!data.localStorageTaskArray && !data.localStorageProjArray) {
 else {
     projectDomFunctions.makeProjList("projectContainer");
     taskListDOMFuncstions.makeTaskList("taskListContainer");
-    taskListDOMFuncstions.makeAddTaskButton("taskListContainer");
-    projectDomFunctions.makeAddProjButton("projectContainer");
+    //taskListDOMFuncstions.makeAddTaskButton("taskListContainer");
+    //projectDomFunctions.makeAddProjButton("projectContainer");
     console.log("default on index");
 }
 
