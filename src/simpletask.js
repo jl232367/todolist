@@ -24,7 +24,7 @@ const pushTaskFormDataToTaskArray = () => {
     const newTaskNotes = document.getElementById("formNotesId").value;
     const defaultTaskIncomplete = "Incomplete";
 
-    const newTaskToPush = taskFactory(newTaskTitle, newTaskDescription, newTaskDueDate, newTaskPriority, newTaskNotes, defaultTaskIncomplete);
+    let newTaskToPush = taskFactory(newTaskTitle, newTaskDescription, newTaskDueDate, newTaskPriority, newTaskNotes, defaultTaskIncomplete);
     dataTransferFuncs.pushData(newTaskToPush);
     //console.log(data.taskArray[0]);
     //console.log(data.taskArray[1]);
