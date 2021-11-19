@@ -19,6 +19,20 @@ const makeAddProjButton = (taskButtonContainingElement) => {
           //
 }
 
+const makeAddProjectTaskButton = (taskButtonContainingElement) => {
+    const taskListCardContainer = document.getElementById(taskButtonContainingElement);
+    //const plusMoreTaskText = document.createElement("h3");
+    //taskListCardContainer.appendChild(plusMoreTaskText);
+    //plusMoreTaskText.innerText = "Add more tasks: =>";
+    //plusMoreTaskText.setAttribute("class", "plusMoreTaskText");
+    const plusMoreTaskPlusButton = document.createElement("button");
+    taskListCardContainer.appendChild(plusMoreTaskPlusButton);
+    plusMoreTaskPlusButton.setAttribute("class", "plusMoreTaskPlusButton");
+    plusMoreTaskPlusButton.setAttribute("id", "addProjTaskPlusButton");
+    plusMoreTaskPlusButton.innerHTML = "Add Task:+";
+    plusMoreTaskPlusButton.addEventListener('click', () => {newProjTaskForm(taskButtonContainingElement)});  //
+}
+
 const newProjForm = (projFormContainingElement) => {
     // Need to generate a form when "+" is hit.  Need to capture: title, description, dueDate, priority, notes, completed
     generalDOM.clearList(projFormContainingElement) //clear contents of task list to make space for form
@@ -281,19 +295,7 @@ const newProjTaskForm = (taskFormContainingElement) => {
     
 }
 
-const makeAddProjectTaskButton = (taskButtonContainingElement) => {
-    const taskListCardContainer = document.getElementById(taskButtonContainingElement);
-    //const plusMoreTaskText = document.createElement("h3");
-    //taskListCardContainer.appendChild(plusMoreTaskText);
-    //plusMoreTaskText.innerText = "Add more tasks: =>";
-    //plusMoreTaskText.setAttribute("class", "plusMoreTaskText");
-    const plusMoreTaskPlusButton = document.createElement("button");
-    taskListCardContainer.appendChild(plusMoreTaskPlusButton);
-    plusMoreTaskPlusButton.setAttribute("class", "plusMoreTaskPlusButton");
-    plusMoreTaskPlusButton.setAttribute("id", "addProjTaskPlusButton");
-    plusMoreTaskPlusButton.innerHTML = "Add Task:+";
-    plusMoreTaskPlusButton.addEventListener('click', () => {newProjTaskForm(taskButtonContainingElement)});  //
-}
+
 
 const makeProjectTaskList = (projectIdKey) => {
     if (!data.projTaskArray) {
