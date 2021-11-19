@@ -70,12 +70,12 @@ const newTaskForm = (taskFormContainingElement) => {
   const submitTaskButton = document.createElement("button");
   submitTaskButton.setAttribute("class", "submitNewTaskFormButton");
   submitTaskButton.setAttribute("id", "submitNewTaskFormButtonId");
-  submitTaskButton.innerText = "Add Task!";
+  submitTaskButton.innerText = "Submit Task!";
   submitTaskButton.addEventListener("click", () => {
     pushDataFuncs.pushTaskFormDataToTaskArray();
     clearList(taskFormContainingElement);
     makeTaskList(taskFormContainingElement);
-    makeAddTaskButton(taskFormContainingElement);
+    makeAddTaskButton("taskListContainer");
     console.log("Not sure why this would execute but trying it.");
   });
   const cancelTaskFormButton = document.createElement("button");
