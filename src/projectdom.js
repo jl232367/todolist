@@ -296,59 +296,64 @@ const makeAddProjectTaskButton = (taskButtonContainingElement) => {
 }
 
 const makeProjectTaskList = (projectIdKey) => {
-    for (let j = 0; j <data.projTaskArray.length; j++) {
-        if (projectIdKey == data.projTaskArray[j].projKeyValue && data.projTaskArray[j].completed === "Incomplete") {
-            //projTaskListContainer.appendChild()
-            const projTaskListContainer = document.getElementById(projectIdKey);
-            const eachTask = document.createElement("div");
-            const expandedTaskInfo = document.createElement("div");
-            const eachTaskTitle = document.createElement("h2");
-            eachTaskTitle.setAttribute("class", "tasktitle");
-            const eachTaskDescription = document.createElement("h4");
-            eachTaskDescription.setAttribute("class", "taskdescription");
-            const eachTaskDueDate = document.createElement("h5");
-            eachTaskDueDate.setAttribute("class", "taskduedate");
-            //const eachTaskPriority = document.createElement("p")
-            const eachTaskNotes = document.createElement("p");
-            eachTaskNotes.setAttribute("class", "tasknotes");
-            const expandCollapseButton = document.createElement("button");
-            //let taskIncomplete = data.projArray[j].completed;
-            expandCollapseButton.addEventListener("click", () => {
-                generalDOM.expandCollapseTask(expandedTaskInfo)
-            });
-            const completedButoon = document.createElement("button");
-            completedButoon.addEventListener("click", () => {
-                let numberForArrayPosition = j;
-                    data.projTaskArray[numberForArrayPosition].completed = "complete"
-                    localStorage.setItem("projTaskArrayKey", JSON.stringify(data.projTaskArray));
-                    generalDOM.clearList(projectIdKey);
-                    makeProjectTaskList(projectIdKey);
-                    //makeAddTaskButton(containingListElement);
-            });
-
-            projTaskListContainer.appendChild(eachTask);
-
-            eachTask.appendChild(eachTaskTitle);
-            eachTask.appendChild(eachTaskDueDate);
-            eachTask.appendChild(expandedTaskInfo);
-            eachTask.appendChild(expandCollapseButton);
-            eachTask.appendChild(completedButoon);
-            expandedTaskInfo.appendChild(eachTaskDescription);
-            expandedTaskInfo.appendChild(eachTaskNotes);
-            expandedTaskInfo.style.display = "none";
-
-            eachTask.setAttribute("class", "eachProjTask");
-            eachTask.setAttribute("id", data.projTaskArray[j].title + j);
-            eachTaskTitle.innerHTML = data.projTaskArray[j].title;
-            eachTaskDueDate.innerHTML = data.projTaskArray[j].dueDate;
-            eachTaskDescription.innerHTML = data.projTaskArray[j].description;
-            eachTaskNotes.innerHTML = data.projTaskArray[j].notes;
-            expandCollapseButton.innerHTML = "Expand/Collapse!";
-            completedButoon.innerHTML = "Completed!"
+    if (!data.projTaskArray) {
+        makeAddProjectTaskButton(containingProjElement);
+    } else {
+        for (let j = 0; j <data.projTaskArray.length; j++) {
+            if (projectIdKey == data.projTaskArray[j].projKeyValue && data.projTaskArray[j].completed === "Incomplete") {
+                //projTaskListContainer.appendChild()
+                const projTaskListContainer = document.getElementById(projectIdKey);
+                const eachTask = document.createElement("div");
+                const expandedTaskInfo = document.createElement("div");
+                const eachTaskTitle = document.createElement("h2");
+                eachTaskTitle.setAttribute("class", "tasktitle");
+                const eachTaskDescription = document.createElement("h4");
+                eachTaskDescription.setAttribute("class", "taskdescription");
+                const eachTaskDueDate = document.createElement("h5");
+                eachTaskDueDate.setAttribute("class", "taskduedate");
+                //const eachTaskPriority = document.createElement("p")
+                const eachTaskNotes = document.createElement("p");
+                eachTaskNotes.setAttribute("class", "tasknotes");
+                const expandCollapseButton = document.createElement("button");
+                //let taskIncomplete = data.projArray[j].completed;
+                expandCollapseButton.addEventListener("click", () => {
+                    generalDOM.expandCollapseTask(expandedTaskInfo)
+                });
+                const completedButoon = document.createElement("button");
+                completedButoon.addEventListener("click", () => {
+                    let numberForArrayPosition = j;
+                        data.projTaskArray[numberForArrayPosition].completed = "complete"
+                        localStorage.setItem("projTaskArrayKey", JSON.stringify(data.projTaskArray));
+                        generalDOM.clearList(projectIdKey);
+                        makeProjectTaskList(projectIdKey);
+                        //makeAddTaskButton(containingListElement);
+                });
+    
+                projTaskListContainer.appendChild(eachTask);
+    
+                eachTask.appendChild(eachTaskTitle);
+                eachTask.appendChild(eachTaskDueDate);
+                eachTask.appendChild(expandedTaskInfo);
+                eachTask.appendChild(expandCollapseButton);
+                eachTask.appendChild(completedButoon);
+                expandedTaskInfo.appendChild(eachTaskDescription);
+                expandedTaskInfo.appendChild(eachTaskNotes);
+                expandedTaskInfo.style.display = "none";
+    
+                eachTask.setAttribute("class", "eachProjTask");
+                eachTask.setAttribute("id", data.projTaskArray[j].title + j);
+                eachTaskTitle.innerHTML = data.projTaskArray[j].title;
+                eachTaskDueDate.innerHTML = data.projTaskArray[j].dueDate;
+                eachTaskDescription.innerHTML = data.projTaskArray[j].description;
+                eachTaskNotes.innerHTML = data.projTaskArray[j].notes;
+                expandCollapseButton.innerHTML = "Expand/Collapse!";
+                completedButoon.innerHTML = "Completed!"
+                    }
                 }
-            }
-            makeAddProjectTaskButton(projectIdKey);
-}
+                makeAddProjectTaskButton(projectIdKey);
+    }
+    }
+   
 
 
 export {makeAddProjButton, makeProjList}
