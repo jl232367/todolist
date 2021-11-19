@@ -10,20 +10,24 @@ import * as data from "./data";
 if (!data.localStorageTaskArray && !data.localStorageProjArray) {
     taskListDOMFuncstions.makeAddTaskButton("taskListContainer");
     projectDomFunctions.makeAddProjButton("projectContainer");
+    console.log("First condition on index");
 } else if (!data.localStorageTaskArray && data.localStorageProjArray) {
     projectDomFunctions.makeProjList("projectContainer");
     taskListDOMFuncstions.makeAddTaskButton("taskListContainer");
     projectDomFunctions.makeAddProjButton("projectContainer");
+    console.log("Second Condition on index");
 } else if (data.localStorageTaskArray && !data.localStorageProjArray) {
     taskListDOMFuncstions.makeTaskList("taskListContainer");
     taskListDOMFuncstions.makeAddTaskButton("taskListContainer");
     projectDomFunctions.makeAddProjButton("projectContainer");
+    console.log("Third condistion on index");
 }
 else {
     projectDomFunctions.makeProjList("projectContainer");
     taskListDOMFuncstions.makeTaskList("taskListContainer");
     taskListDOMFuncstions.makeAddTaskButton("taskListContainer");
     projectDomFunctions.makeAddProjButton("projectContainer");
+    console.log("default on index");
 }
 
 
