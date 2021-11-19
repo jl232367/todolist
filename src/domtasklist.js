@@ -75,7 +75,7 @@ const newTaskForm = (taskFormContainingElement) => {
     pushDataFuncs.pushTaskFormDataToTaskArray();
     clearList(taskFormContainingElement);
     makeTaskList(taskFormContainingElement);
-    makeAddTaskButton("taskListContainer");
+    //makeAddTaskButton("taskListContainer");
     console.log("Not sure why this would execute but trying it.");
   });
   const cancelTaskFormButton = document.createElement("button");
