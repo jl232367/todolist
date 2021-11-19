@@ -358,7 +358,7 @@ const makeProjectTaskList = (projectIdKey) => {
    
 
 
-export {makeAddProjButton, makeProjList}
+export {makeAddProjButton, makeProjList, makeProjectTaskList, makeAddProjectTaskButton}
 
 /*
 const eachTask = document.createElement("div");
