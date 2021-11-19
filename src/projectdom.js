@@ -253,7 +253,10 @@ const newProjTaskForm = (taskFormContainingElement) => {
     cancelTaskFormButton.setAttribute("class", "cancelTaskFrom");
     cancelTaskFormButton.setAttribute("id", "cancelTaskFormId");
     cancelTaskFormButton.innerText = "Cancel";
-    cancelTaskFormButton.addEventListener("click", () => {generalDOM.clearList(); generalDOM.makeAddTaskButton();});
+    cancelTaskFormButton.addEventListener("click", () => {
+        generalDOM.clearList(taskFormContainingElement); 
+        makeProjectTaskList(taskFormContainingElement);
+    });
     const lineBreak = document.createElement("br");
 
     taskFormContainer.appendChild(simpletaskform);
