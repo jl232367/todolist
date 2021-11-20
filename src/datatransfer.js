@@ -6,12 +6,12 @@ const pushData = (newTask) => {
     if (!data.taskArray) {
         data.taskArray = [];
         data.taskArray.push(newTask);
-        localStorage.setItem("TaskArrayKey", JSON.stringify(data.taskArray));
+        localStorage.setItem("taskArrayKey", JSON.stringify(data.taskArray));
 
         let localStorageTaskArray = localStorage.getItem("taskArrayKey");
 
         data.taskArray = JSON.parse(localStorageTaskArray);
-
+        console.log("Ran first condistion for pushData");
     } else {
         data.taskArray.push(newTask);
         localStorage.setItem("taskArrayKey", JSON.stringify(data.taskArray));
@@ -19,6 +19,7 @@ const pushData = (newTask) => {
         let localStorageTaskArray = localStorage.getItem("taskArrayKey");
 
         data.taskArray = JSON.parse(localStorageTaskArray);
+        console.log("Ran second condition for pushData");
     }
     //console.log(newTask);
     //data.taskArray.push(newTask);
@@ -70,7 +71,7 @@ const pushProj = (newProj) => {
             let localStorageProjArray = localStorage.getItem("projArrayKey");
 
             data.projArray = JSON.parse(localStorageProjArray);
-    
+            console.log("First condition for pushProj");
         } else {
             data.projArray.push(newProj);
             localStorage.setItem("projArrayKey", JSON.stringify(data.projArray));
@@ -78,6 +79,7 @@ const pushProj = (newProj) => {
             let localStorageProjArray = localStorage.getItem("projArrayKey");
 
             data.projArray = JSON.parse(localStorageProjArray);
+            console.log("Ran default on pushProj");
         }
         
     

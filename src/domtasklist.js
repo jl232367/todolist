@@ -70,12 +70,12 @@ const newTaskForm = (taskFormContainingElement) => {
   const submitTaskButton = document.createElement("button");
   submitTaskButton.setAttribute("class", "submitNewTaskFormButton");
   submitTaskButton.setAttribute("id", "submitNewTaskFormButtonId");
-  submitTaskButton.innerText = "Submit Task!";
+  submitTaskButton.innerText = "Add Task!";
   submitTaskButton.addEventListener("click", () => {
     pushDataFuncs.pushTaskFormDataToTaskArray();
     clearList(taskFormContainingElement);
     makeTaskList(taskFormContainingElement);
-    //makeAddTaskButton("taskListContainer");
+    makeAddTaskButton("taskListContainer");
     console.log("Not sure why this would execute but trying it.");
   });
   const cancelTaskFormButton = document.createElement("button");
@@ -85,7 +85,7 @@ const newTaskForm = (taskFormContainingElement) => {
   cancelTaskFormButton.addEventListener("click", () => {
     clearList(taskFormContainingElement);
     makeTaskList(taskFormContainingElement);
-    //makeAddTaskButton(taskFormContainingElement);
+    makeAddTaskButton(taskFormContainingElement);
   });
   const lineBreak = document.createElement("br");
 
@@ -127,7 +127,9 @@ const makeAddTaskButton = (taskButtonContainingElement) => {
 const makeTaskList = (containingListElement) => {
   if (!data.taskArray) {
     makeAddTaskButton("taskListContainer");
+    console.log("Ran first condistion on makeTaskList");
 } else {
+  console.log("ran default condition on makeTaskList");
   for (let i = 0; i < data.taskArray.length; i++) {
     if (data.taskArray[i].completed === "Incomplete") {
       const taskListContainerHolder = document.getElementById(
