@@ -71,6 +71,7 @@ button:active:after {
 }
 #projectContainer {
     background-color: aliceblue;
+    border-radius: 10px;
     display: flex;
     flex: auto;
     flex-wrap: wrap;
@@ -88,6 +89,7 @@ button:active:after {
     max-height: 35%;
     margin: auto;
     margin-top: 25px;
+    border-radius: 10px;
     display: flex;
     flex: auto;
     flex-wrap: wrap;
@@ -107,7 +109,7 @@ button:active:after {
     width: 20%;
     margin: 1.5%;
     padding: 2%;
-    border-radius: 10%;
+    border-radius: 10px;
     background-color: #4ec2e6;
     
 }
