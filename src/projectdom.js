@@ -103,14 +103,14 @@ const newProjForm = (projFormContainingElement) => {
         generalDOM.clearList(projFormContainingElement);
         makeProjList(projFormContainingElement);
         //makeTaskList(taskFormContainingElement);
-        makeAddProjButton("projectContainer");
+        //makeAddProjButton("projectContainer");
     });
     const cancelTaskFormButton = document.createElement("button");
     cancelTaskFormButton.setAttribute("class", "cancelTaskFrom");
     cancelTaskFormButton.setAttribute("id", "cancelTaskFormId");
     cancelTaskFormButton.innerText = "Cancel";
     cancelTaskFormButton.addEventListener("click", () => {
-            generalDOM.clearList(projFormContainingElement); makeProjList(projFormContainingElement); makeAddProjButton("projectContainer");
+            generalDOM.clearList(projFormContainingElement); makeProjList(projFormContainingElement); //makeAddProjButton("projectContainer");
         });
     const lineBreak = document.createElement("br");
 
@@ -161,7 +161,7 @@ const makeProjList = (containingProjElement) => {
                         localStorage.setItem("projArrayKey", JSON.stringify(data.projArray));
                         generalDOM.clearList(containingProjElement);
                         makeProjList(containingProjElement);
-                        makeAddProjButton(containingProjElement);
+                        //makeAddProjButton(containingProjElement);
                         //makeAddTaskButton(containingListElement);
                 });
         eachProj.appendChild(eachProjTitle);
@@ -184,6 +184,7 @@ const makeProjList = (containingProjElement) => {
         //makeAddProjectTaskButton(projTaskListContainer.id);
             }
         }
+        makeAddProjButton(containingProjElement);
     }
     }
     

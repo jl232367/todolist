@@ -75,7 +75,7 @@ const newTaskForm = (taskFormContainingElement) => {
     pushDataFuncs.pushTaskFormDataToTaskArray();
     clearList(taskFormContainingElement);
     makeTaskList(taskFormContainingElement);
-    makeAddTaskButton("taskListContainer");
+    //makeAddTaskButton("taskListContainer");
     console.log("Not sure why this would execute but trying it.");
   });
   const cancelTaskFormButton = document.createElement("button");
@@ -85,7 +85,7 @@ const newTaskForm = (taskFormContainingElement) => {
   cancelTaskFormButton.addEventListener("click", () => {
     clearList(taskFormContainingElement);
     makeTaskList(taskFormContainingElement);
-    makeAddTaskButton(taskFormContainingElement);
+    //makeAddTaskButton(taskFormContainingElement);
   });
   const lineBreak = document.createElement("br");
 
@@ -159,7 +159,7 @@ const makeTaskList = (containingListElement) => {
         localStorage.setItem("taskArrayKey", JSON.stringify(data.taskArray));
         clearList(containingListElement);
         makeTaskList(containingListElement);
-        makeAddTaskButton(containingListElement);
+        //makeAddTaskButton(containingListElement);
       });
 
       taskListContainerHolder.appendChild(eachTask);
@@ -183,6 +183,7 @@ const makeTaskList = (containingListElement) => {
       completedButoon.innerHTML = "Completed!";
     }
   }
+  makeAddTaskButton(containingListElement);
 }
   
 };
